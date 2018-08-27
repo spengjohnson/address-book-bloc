@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/spengjohnson/address-book/issues"
   },
-  "homepage": "https://github.com/spengjohnson/address-book#readme"
+  "homepage": "https://github.com/spengjohnson/address-book#readme",
+  "dependencies": {
+    "inquirer": "^5.1.0"
+  }
 }
