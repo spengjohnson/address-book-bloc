@@ -1,4 +1,5 @@
 const inquirer = require('inquirer'); 
+const moment = require('moment'); 
 
 module.exports = class MenuController {
 	constructor() {
@@ -9,6 +10,8 @@ module.exports = class MenuController {
 			message: "Please choose from an option below: ", 
 			choices: [
 				"Add new contact", 
+				"getDate",
+				"remindMe",
 				"Exit"
 			]
 		}
@@ -24,8 +27,12 @@ module.exports = class MenuController {
 				case "Add new contact" :
 					this.addContact(); 
 					break; 
+				case "getDate" : 
+					this.getDate(); 
 				case "Exit": 
 					this.exit(); 
+				case "remindMe" : 
+					this.remindMe(); 
 				default: 
 					console.log("Invalid input"); 
 					this.main(); 
@@ -46,6 +53,10 @@ module.exports = class MenuController {
 		this.main(); 
 	}
 
+	getDate() {
+		console.log(moment().format('MMMM Do YYYY, h:mm:ss a')); 
+	}
+
 	exit() {
 		console.log("Thanks for using AddressBook!"); 
 		process.exit(); 
@@ -53,5 +64,10 @@ module.exports = class MenuController {
 
 	getContactCount() {
 		return this.contacts.length; 
+	}
+
+	remindMe() {
+		//return a string 
+		return 'Learning is a life-long pursuit'; 		
 	}
 }

@@ -15,4 +15,14 @@ describe('MenuController', () => {
 			this.menu.contacts.push('Bob'); 
 			expect(this.menu.getContactCount()).toBe(1)	
 		}); 
+
+		it('should return string about learning', () => {
+			expect(this.menu.remindMe()).toBe('Learning is a life-long pursuit'); 
+		});
+
+		it('should return invalid input when default case', () => {
+			expect('default').toBe('default'); 
+		}); 
+
+	}); 
 });
