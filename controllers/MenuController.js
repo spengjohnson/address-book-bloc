@@ -70,6 +70,8 @@ module.exports = class MenuController {
 
 	remindMe() {
 		//return a string 
-		return 'Learning is a life-long pursuit'; 		
+		var learningString = 'Learning is a life-long pursuit'; 
+		console.log(learningString); 
+		return learningString; 		
 	}
 }
