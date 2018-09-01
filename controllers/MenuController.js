@@ -29,10 +29,12 @@ module.exports = class MenuController {
 					break; 
 				case "getDate" : 
 					this.getDate(); 
+					break; 
 				case "Exit": 
 					this.exit(); 
 				case "remindMe" : 
 					this.remindMe(); 
+					break; 
 				default: 
 					console.log("Invalid input"); 
 					this.main(); 
