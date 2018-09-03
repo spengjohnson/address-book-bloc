@@ -1,4 +1,5 @@
 const inquirer = require('inquirer'); 
+const ContactController = require('./ContactController'); 
 
 module.exports = class MenuController {
 	constructor() {
@@ -13,7 +14,7 @@ module.exports = class MenuController {
 			]
 		}
 	]; 
-	this.contacts = []; 
+	this.book = new ContactController(); 
 	}
 	
 
@@ -24,8 +25,14 @@ module.exports = class MenuController {
 				case "Add new contact" :
 					this.addContact(); 
 					break; 
+				case "getDate" : 
+					this.getDate(); 
+					break; 
 				case "Exit": 
 					this.exit(); 
+				case "remindMe" : 
+					this.remindMe(); 
+					break; 
 				default: 
 					console.log("Invalid input"); 
 					this.main(); 
@@ -41,13 +48,36 @@ module.exports = class MenuController {
 	}
 
 	addContact() {
-		this.clear(); 
-		console.log('addContact called'); 
+		inquirer.prompt(this.book.addContactQuestions).then((answers) => {
+			this.book.addContact(answers.name, answers.phone).then((contact) => {
+				console.log('Contact added successfully!'); 
+				this.main(); 
+			}).catch((err) => {
+				console.log(err); 
+				this.main(); 
+			}); 
+		}); 
 		this.main(); 
+	}
+
+
+	getDate() {
+		console.log(moment().format('MMMM Do YYYY, h:mm:ss a')); 
 	}
 
 	exit() {
 		console.log("Thanks for using AddressBook!"); 
 		process.exit(); 
+	}
+
+	getContactCount() {
+		return this.contacts.length; 
+	}
+
+	remindMe() {
+		//return a string 
+		var learningString = 'Learning is a life-long pursuit'; 
+		console.log(learningString); 
+		return learningString; 		
 	}
 }

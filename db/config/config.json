@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "spgant",
+    "password": null,
+    "database": "address-book-dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "test": {
+    "username": "spgant",
+    "password": null,
+    "database": "address-book-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres", 
+    "logging": false
+  }
+}
