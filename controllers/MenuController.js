@@ -1,4 +1,3 @@
-const inquirer = require('inquirer'); 
 const ContactController = require('./ContactController'); 
 
 module.exports = class MenuController {

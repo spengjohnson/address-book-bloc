@@ -19,11 +19,23 @@ module.exports = class ContactController {
 			validate(val) { //runs after the question is answered. If method returns False, question is asked again.
 				return val !== ""; //checking to make sure it isn't an empty string (would tell us no answer was given)
 			}
+		}, 
+		{
+			type: "input", 
+			name: "email", 
+			message: "Contact's email - ", 
+			validate(val) {
+				return val !== ""; 
+			}
 		}
+
 		]; 
 	}
+	addContact(name, phone, email) {
+		return Contact.create({name, phone, email});  
+	}; 
 
-	addContact(name, phone) {
-		return Contact.create({name, phone}) 
+	getContacts() {
+		return Contact.findAll()
 	}
 }
