@@ -106,4 +106,8 @@ module.exports = class MenuController {
 			this.main(); 
 		}); 
 	}
+
 }
+
+}
+

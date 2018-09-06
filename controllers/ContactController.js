@@ -41,7 +41,13 @@ module.exports = class ContactController {
 	}
 
 	iterativeSearch(contacts,target) {
-		//method definition here 
+      for(let contact of contacts){
+        if(contact.name.toLowerCase() === target.toLowerCase()){
+          return contact;
+        }
+      }
+      return null;
+	}
 		for(let contact of contacts) {
 			if(contact.name.toLowerCase === target.toLowerCase())
 				return contact; 
@@ -50,6 +56,8 @@ module.exports = class ContactController {
 	}
 
 	binarySearch(contacts,target) {
+
+		binarySearch(contacts,target) {
 			let min = 0; 
 			let max = contacts.length -1; 
 			let mid; 
@@ -69,7 +77,6 @@ module.exports = class ContactController {
 
 			return null; 
 		}
-	
 
 	search(name) {
 		return Contact.findOne({
