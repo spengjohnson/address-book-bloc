@@ -1,4 +1,6 @@
 const ContactController = require('./ContactController'); 
+const inquirer = require('inquirer'); 
+const moment = require('moment'); 
 
 module.exports = class MenuController {
 	constructor() {
@@ -9,6 +11,9 @@ module.exports = class MenuController {
 			message: "Please choose from an option below: ", 
 			choices: [
 				"Add new contact", 
+				"View all contacts", 
+				"getDate", 
+				"remindMe",
 				"Exit"
 			]
 		}
@@ -23,6 +28,9 @@ module.exports = class MenuController {
 			switch(response.mainMenuChoice){
 				case "Add new contact" :
 					this.addContact(); 
+					break; 
+				case "View all contacts" :
+					this.getContacts(); 
 					break; 
 				case "getDate" : 
 					this.getDate(); 
@@ -78,5 +86,24 @@ module.exports = class MenuController {
 		var learningString = 'Learning is a life-long pursuit'; 
 		console.log(learningString); 
 		return learningString; 		
+	}
+
+	getContacts() {
+		this.clear(); 
+
+		this.book.getContacts().then((contacts) => {
+			for (let contact of contacts) {
+				console.log(
+					`name: ${contact.name}
+					phone number: ${contact.phone}
+					email: ${contact.email}
+					--------------------`
+					); 
+			}
+			this.main(); 
+		}).catch((err) => {
+			console.log(err); 
+			this.main(); 
+		}); 
 	}
 }
